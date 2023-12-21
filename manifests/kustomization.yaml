@@ -1,0 +1,5 @@
+namespace: rhdh
+
+resources:
+  - rhdh-secrets.yaml
+  - app-config-rhdh.yaml

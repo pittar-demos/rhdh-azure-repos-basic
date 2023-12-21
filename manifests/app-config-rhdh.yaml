@@ -1,0 +1,50 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: app-config-rhdh
+data:
+  app-config-rhdh.yaml: |
+    app:
+      title: Company Developer Hub
+
+    azureDevOps:
+      host: dev.azure.com
+      token: ${PERSONAL_ACCESS_TOKEN}
+      organization: pittar-demos
+
+    auth:
+      environment: development
+      providers:
+        microsoft:
+          development:
+            clientId: ${AZURE_CLIENT_ID}
+            clientSecret: ${AZURE_CLIENT_SECRET}
+            tenantId: ${AZURE_TENANT_ID}
+
+    signInPage: microsoft
+
+    integrations:
+      azure:
+        - host: dev.azure.com
+          credentials:
+            - personalAccessToken: ${PERSONAL_ACCESS_TOKEN}
+
+    catalog:
+      rules:
+        - allow: [Component, System, Group, Resource, Location, Template, API]
+      locations:
+        - type: url
+          target: https://dev.azure.com/pittar-demos/rhdh-demo/_git/software-templates?path=/showcase-templates.yaml
+
+    backend:
+      auth:
+        keys:
+          - secret: abc123
+
+    enabled:
+      azure: true
+      azureDevOps: true
+      github: false
+      githubOrg: false
+      argocd: false
+
