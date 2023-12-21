@@ -2,7 +2,7 @@ global:
   auth:
     backend:
       enabled: true
-  clusterRouterBase: apps.cluster-krgps.dynamic.redhatworkshops.io
+  clusterRouterBase: apps.<your cluster domain>
   dynamic:
     includes:
       - dynamic-plugins.default.yaml
